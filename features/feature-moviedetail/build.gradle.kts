@@ -4,7 +4,6 @@ plugins {
     id("hi.android.library.jacoco")
     id("dagger.hilt.android.plugin")
     id("hi.spotless")
-
     id("hi.android.library.compose")
 }
 android {

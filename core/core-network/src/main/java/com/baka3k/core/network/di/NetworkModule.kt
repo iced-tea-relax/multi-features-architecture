@@ -1,5 +1,7 @@
 package com.baka3k.core.network.di
 
+import com.baka3k.core.network.datasource.CreditNetworkDataSource
+import com.baka3k.core.network.datasource.GenreNetworkDataSource
 import com.baka3k.core.network.datasource.MovieNetworkDataSource
 import com.baka3k.core.network.datasource.retrofit.movie.RetrofitMovieNetworkDataSource
 import dagger.Binds
@@ -21,11 +23,22 @@ interface NetworkModule {
         niANetwork: RetrofitMovieNetworkDataSource
     ): MovieNetworkDataSource
 
+    @Binds
+    fun bindsCreditNetwork(
+        creditNetworkDataSource: RetrofitMovieNetworkDataSource
+    ): CreditNetworkDataSource
+
+    @Binds
+    fun bindsGenreNetwork(
+        creditNetworkDataSource: RetrofitMovieNetworkDataSource
+    ): GenreNetworkDataSource
+
     companion object {
         @Provides
         @Singleton
         fun providesNetworkJson(): Json = Json {
             ignoreUnknownKeys = true
+            coerceInputValues = true
         }
     }
 }

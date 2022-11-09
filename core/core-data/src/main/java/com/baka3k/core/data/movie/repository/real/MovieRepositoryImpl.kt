@@ -1,15 +1,14 @@
-package com.baka3k.core.data.repository
+package com.baka3k.core.data.movie.repository.real
 
-import android.util.Log
-import com.baka3k.core.common.logger.Logger
 import com.baka3k.core.common.result.Result
-import com.baka3k.core.data.model.asEntity
-import com.baka3k.core.data.model.asNowPlayingEntity
-import com.baka3k.core.data.model.asNowPlayingMovie
-import com.baka3k.core.data.model.asPopularEntity
-import com.baka3k.core.data.model.asPopularMovie
-import com.baka3k.core.data.model.asUpStream
+import com.baka3k.core.data.movie.model.asEntity
+import com.baka3k.core.data.movie.model.asMovieTypeNowPlayingEntity
+import com.baka3k.core.data.movie.model.asMovieTypePopularEntity
+import com.baka3k.core.data.movie.model.asNowPlayingMovie
+import com.baka3k.core.data.movie.model.asPopularMovie
+import com.baka3k.core.data.movie.repository.MovieRepository
 import com.baka3k.core.database.dao.MovieDao
+import com.baka3k.core.database.dao.MovieTypeDao
 import com.baka3k.core.database.model.MovieEntity
 import com.baka3k.core.database.model.asExternalModel
 import com.baka3k.core.datastore.HiPreferencesDataSource
@@ -23,6 +22,7 @@ import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(
     private val movieDao: MovieDao,
+    private val movieTypeDao: MovieTypeDao,
     private val network: MovieNetworkDataSource,
     private val preference: HiPreferencesDataSource
 ) : MovieRepository {
@@ -54,7 +54,8 @@ class MovieRepositoryImpl @Inject constructor(
         return when (val response = network.getPopularMovie(pageinfo)) {
             is Result.Success -> {
                 val data = response.data
-                movieDao.upsertMovie(data.map(NetworkMovie::asPopularEntity))
+                movieDao.upsertMovie(data.map(NetworkMovie::asEntity))
+                movieTypeDao.insertOrIgnoreMovieType(data.map(NetworkMovie::asMovieTypePopularEntity))
                 Result.Success(data.map(NetworkMovie::asPopularMovie))
             }
             is Result.Error -> {
@@ -70,7 +71,8 @@ class MovieRepositoryImpl @Inject constructor(
         return when (val response = network.getNowPlayingMovie(pageinfo)) {
             is Result.Success -> {
                 val data = response.data
-                movieDao.upsertMovie(data.map(NetworkMovie::asNowPlayingEntity))
+                movieDao.upsertMovie(data.map(NetworkMovie::asEntity))
+                movieTypeDao.insertOrIgnoreMovieType(data.map(NetworkMovie::asMovieTypeNowPlayingEntity))
                 Result.Success(data.map(NetworkMovie::asNowPlayingMovie))
             }
             is Result.Error -> {

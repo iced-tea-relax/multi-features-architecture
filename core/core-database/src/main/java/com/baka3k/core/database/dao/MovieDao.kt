@@ -7,27 +7,53 @@ import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
 import com.baka3k.core.database.model.MovieEntity
+import com.baka3k.core.database.model.MovieType.NOW_PLAYING
+import com.baka3k.core.database.model.MovieType.POPULAR
+import com.baka3k.core.database.model.MovieType.TOP_RATE
+import com.baka3k.core.database.model.MovieType.UP_COMMING
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MovieDao {
-    companion object {
-        const val POPULAR = 1
-        const val NOW_PLAYING = 2
-        const val TOP_RATE = 3
-        const val UP_COMMING = 4
-    }
 
-    @Query(value = "SELECT * FROM movies WHERE type = '$POPULAR' Order by id desc")
+    @Transaction
+    @Query(
+        value = """
+            SELECT * FROM movies INNER JOIN movie_type ON movies.id = movie_type.movie_id
+            WHERE movie_type.type_id = '$POPULAR'
+            ORDER BY movies.id  DESC
+    """
+    )
     fun getPolularMovieEntitiesStream(): Flow<List<MovieEntity>>
 
-    @Query(value = "SELECT * FROM movies WHERE type = '$NOW_PLAYING' Order by id desc")
+    @Transaction
+    @Query(
+        value = """
+            SELECT * FROM movies INNER JOIN movie_type ON movies.id = movie_type.movie_id
+            WHERE movie_type.type_id = '$NOW_PLAYING'
+            ORDER BY movies.id  DESC
+    """
+    )
     fun getNowPlayingEntitiesStream(): Flow<List<MovieEntity>>
 
-    @Query(value = "SELECT * FROM movies WHERE type = '$TOP_RATE'")
+    @Transaction
+    @Query(
+        value = """
+            SELECT * FROM movies INNER JOIN movie_type ON movies.id = movie_type.movie_id
+            WHERE movie_type.type_id = '$TOP_RATE'
+            ORDER BY movies.id  DESC
+    """
+    )
     fun getTopRateMovieEntitiesStream(): Flow<List<MovieEntity>>
 
-    @Query(value = "SELECT * FROM movies WHERE type = '$UP_COMMING'")
+    @Transaction
+    @Query(
+        value = """
+            SELECT * FROM movies INNER JOIN movie_type ON movies.id = movie_type.movie_id
+            WHERE movie_type.type_id = '$UP_COMMING'
+            ORDER BY movies.id  DESC
+    """
+    )
     fun getUpCommingMovieEntitiesStream(): Flow<List<MovieEntity>>
 
     @Query(
@@ -64,6 +90,15 @@ interface MovieDao {
         insertMany = ::insertOrIgnoreMovie,
         updateMany = ::updateMovies
     )
+
+    @Transaction
+    suspend fun upsertMovie(entities: List<MovieEntity>, movieType: Int) {
+        upsert(
+            items = entities,
+            insertMany = ::insertOrIgnoreMovie,
+            updateMany = ::updateMovies
+        )
+    }
 
     /**
      * Deletes rows in the db matching the specified [ids]

@@ -37,9 +37,7 @@ data class MovieEntity(
     @ColumnInfo(defaultValue = "0.0")
     val voteAverage: Double,
     @ColumnInfo(defaultValue = "0")
-    val voteCount: Long,
-    @ColumnInfo(defaultValue = "0")
-    val type: Int
+    val voteCount: Long
 )
 
 fun MovieEntity.asExternalModel() = Movie(

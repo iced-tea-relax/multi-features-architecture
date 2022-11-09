@@ -8,6 +8,7 @@ plugins {
     kotlin("kapt")
 //    id("jacoco")
     id("dagger.hilt.android.plugin")
+    id("org.jetbrains.kotlin.android")
 //    id("hi.spotless")
 }
 
@@ -91,8 +92,10 @@ dependencies {
     implementation(project(path = ":core:core-navigation"))
 
     implementation(project(path = ":features:feature-movie-compose"))
+    implementation(project(path = ":features:feature-movie-detail-compose"))
     implementation(project(path = ":features:feature-movie"))
     implementation(project(path = ":features:feature-moviedetail"))
+    implementation(project(path = ":sync"))
 
 //    implementation(project(path = ":core-ui"))
 //    implementation(project(path = ":core-navigation"))

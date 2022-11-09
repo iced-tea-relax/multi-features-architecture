@@ -1,7 +1,7 @@
 package com.baka3k.core.model
 
 data class Movie(
-    val adult: Boolean =false,
+    val adult: Boolean = false,
     val backdropPath: String = "",
     val genreIDS: List<Long> = emptyList(),
     val id: Long = 0,
@@ -16,3 +16,5 @@ data class Movie(
     val voteAverage: Double = 0.0,
     val voteCount: Long = 0
 )
+
+data class Type(val id: Long = 0, val title: String = "")

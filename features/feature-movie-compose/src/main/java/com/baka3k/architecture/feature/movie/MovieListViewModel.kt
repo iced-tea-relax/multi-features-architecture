@@ -4,11 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.baka3k.architecture.feature.movie.interactor.GetMovieNowPlayingUseCase
 import com.baka3k.architecture.feature.movie.interactor.GetMoviePopularUseCase
-import com.baka3k.core.common.logger.Logger
 import com.baka3k.core.common.result.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
@@ -25,7 +23,7 @@ class MovieListViewModel @Inject constructor(
     private val _isLoadingPolular = MutableStateFlow(false)
     val nowPlayingUiState =
         movieNowPlayingUseCase.invoke()
-            .combine(_isLoadingNowPlaying) { nowPlayingResult, isLoading ->
+            . combine(_isLoadingNowPlaying) { nowPlayingResult, isLoading ->
                 if (isLoading) {
                     NowPlayingUiState.Loading
                 } else {

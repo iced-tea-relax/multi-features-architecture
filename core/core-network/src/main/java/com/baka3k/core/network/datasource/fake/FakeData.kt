@@ -18,7 +18,7 @@ object FakeData {
         voteAverage = 8.1,
         title = "Stay up to date with the latest events and announcements from Android!",
         originalTitle = "",
-        backdrop_path = "https://firebasestorage.googleapis.com/v0/b/now-in-android.appspot.com/o/img%2Fic_topic_Headlines.svg?alt=media&token=506faab0-617a-4668-9e63-4a2fb996603f"
+        backdropPath = "https://firebasestorage.googleapis.com/v0/b/now-in-android.appspot.com/o/img%2Fic_topic_Headlines.svg?alt=media&token=506faab0-617a-4668-9e63-4a2fb996603f"
     )
     val sampleTopic = NetworkTopic(
         id = "2",

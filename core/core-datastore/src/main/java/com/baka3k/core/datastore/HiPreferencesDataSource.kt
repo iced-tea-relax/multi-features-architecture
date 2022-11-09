@@ -85,7 +85,7 @@ class HiPreferencesDataSource @Inject constructor(
                 }
             }
         } catch (ioException: IOException) {
-            Log.e("NiaPreferences", "Failed to update user preferences", ioException)
+            Log.e("HiPreferences", "Failed to update user preferences", ioException)
         }
     }
 

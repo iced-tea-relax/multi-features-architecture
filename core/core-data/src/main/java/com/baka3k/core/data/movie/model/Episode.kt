@@ -1,4 +1,4 @@
-package com.baka3k.core.data.model
+package com.baka3k.core.data.movie.model
 
 import com.baka3k.core.database.model.EpisodeEntity
 import com.baka3k.core.network.model.NetworkEpisode

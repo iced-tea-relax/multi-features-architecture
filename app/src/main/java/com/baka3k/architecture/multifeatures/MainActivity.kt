@@ -2,7 +2,6 @@ package com.baka3k.architecture.multifeatures
 
 import android.os.Bundle
 import androidx.core.net.toUri
-import androidx.navigation.createGraph
 import androidx.navigation.findNavController
 import androidx.viewbinding.ViewBinding
 import com.baka3k.architecture.core.ui.BaseActivity

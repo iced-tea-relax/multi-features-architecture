@@ -22,7 +22,7 @@ inline fun NavController.graphScreenMovieDetail(): NavGraph {
     return createGraph(
         startDestination = MovieDetailScreenRouter.startScreen,
     ) {
-        fragment<MovieDetailFragment>(MovieDetailScreenRouter.startScreen,) {
+        fragment<MovieDetailFragment>(MovieDetailScreenRouter.startScreen) {
             label = "movie Detail"
             deepLink {
                 uriPattern =

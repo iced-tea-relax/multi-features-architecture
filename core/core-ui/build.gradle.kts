@@ -20,11 +20,6 @@ dependencies {
     implementation(libs.androidx.appcompat)
 
     implementation(libs.androidx.recyclerview)
-    // TODO : Remove these dependency once we upgrade to Android Studio Dolphin b/228889042
-//    // These dependencies are currently necessary to render Compose previews
-//    debugImplementation(libs.androidx.fragment)
-//    debugImplementation(libs.androidx.lifecycle.viewModelCompose)
-//    debugImplementation(libs.androidx.savedstate.ktx)
 
     api(libs.androidx.compose.foundation)
     api(libs.androidx.compose.foundation.layout)
