@@ -8,12 +8,14 @@ import com.baka3k.core.database.dao.CastDao
 import com.baka3k.core.database.dao.CrewDao
 import com.baka3k.core.database.dao.GenreDao
 import com.baka3k.core.database.dao.MovieDao
+import com.baka3k.core.database.dao.MovieGenreDao
 import com.baka3k.core.database.dao.MovieTypeDao
 import com.baka3k.core.database.dao.TypeDao
 import com.baka3k.core.database.model.CastEntity
 import com.baka3k.core.database.model.CrewEntity
 import com.baka3k.core.database.model.GenreEntity
 import com.baka3k.core.database.model.MovieEntity
+import com.baka3k.core.database.model.MovieGenreCrossRef
 import com.baka3k.core.database.model.MovieTypeCrossRef
 import com.baka3k.core.database.model.TypeEntity
 import com.baka3k.core.database.util.InstantConverter
@@ -27,6 +29,7 @@ import com.baka3k.core.database.util.NewsResourceTypeConverter
         CastEntity::class,
         CrewEntity::class,
         GenreEntity::class,
+        MovieGenreCrossRef::class,
     ],
     version = 9,
     autoMigrations = [
@@ -52,4 +55,5 @@ abstract class HiDatabase : RoomDatabase() {
     abstract fun crewDao(): CrewDao
     abstract fun castDao(): CastDao
     abstract fun genreDao(): GenreDao
+    abstract fun movieGenreDao(): MovieGenreDao
 }

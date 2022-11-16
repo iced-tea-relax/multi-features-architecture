@@ -6,7 +6,7 @@ import androidx.viewbinding.ViewBinding
 
 abstract class BaseActivity<Binding : ViewBinding> : AppCompatActivity() {
     private var _binding: ViewBinding? = null
-    protected val binding: Binding get() = (_binding!! as Binding)
+    private val binding: Binding get() = (_binding!! as Binding)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = initViewBinding()

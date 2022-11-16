@@ -4,12 +4,14 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.Button
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
@@ -29,7 +31,10 @@ import com.baka3k.architecture.core.ui.component.AsyncImageView
 import com.baka3k.architecture.core.ui.theme.AppTheme
 import com.baka3k.core.data.movie.model.PhotoSize
 import com.baka3k.core.data.movie.model.asPhotoUrl
+import com.baka3k.core.model.Genre
 import com.baka3k.core.model.Movie
+import com.google.accompanist.flowlayout.FlowRow
+import kotlin.random.Random
 
 @Composable
 fun topGradient() {
@@ -104,7 +109,6 @@ fun MovieInfoScreen(modifier: Modifier = Modifier, movie: Movie) {
 
         }
     }
-//    topGradient()
 }
 
 @Composable
@@ -113,7 +117,7 @@ private fun infoLayout(modifier: Modifier = Modifier, movie: Movie) {
         modifier = modifier
             .padding(top = 170.dp, start = 15.dp, end = 15.dp)
             .background(color = Color(255, 255, 255, 50), shape = MaterialTheme.shapes.large)
-            .height(150.dp)
+            .height(160.dp)
     ) {
         Text(
             text = movie.title,
@@ -121,22 +125,42 @@ private fun infoLayout(modifier: Modifier = Modifier, movie: Movie) {
             modifier = modifier.padding(top = 19.dp, start = 9.dp, end = 9.dp),
             maxLines = 1
         )
-        val modifier = Modifier.padding(start = 9.dp, top = 7.dp)
-        Row {
-            roundButton(title = "Action",
-                backgroundColor = Color(1, 174, 248),
-                modifier = modifier,
-                onClicked = {})
-            roundButton(title = "${movie.voteCount} Vote",
-                backgroundColor = Color(189, 0, 247),
-                modifier = modifier,
-                onClicked = {})
-            roundButton(title = "${movie.voteAverage} *",
-                backgroundColor = Color(253, 177, 43),
-                modifier = modifier,
-                onClicked = {})
+        val modifier = Modifier.padding(start = 9.dp, top = 7.dp, end = 9.dp, bottom = 7.dp)
+        FlowRow(
+            modifier = modifier
+                .height(IntrinsicSize.Max)
+                .verticalScroll(rememberScrollState())
+        ) {
+            Row {
+                roundButton(title = "${movie.voteCount} Vote",
+                    backgroundColor = randomColor(),
+                    modifier = modifier,
+                    onClicked = {})
+                roundButton(title = "${movie.voteAverage} *",
+                    backgroundColor = randomColor(),
+                    modifier = modifier,
+                    onClicked = {})
+            }
+            genreUi(genres = movie.genres, modifier = modifier)
         }
     }
+}
+
+@Composable
+fun genreUi(genres: List<Genre>, modifier: Modifier = Modifier) {
+    genres.forEach { genre: Genre ->
+        roundButton(title = genre.name,
+            backgroundColor = randomColor(),
+            modifier = modifier,
+            onClicked = {})
+    }
+}
+
+fun randomColor(): Color {
+    val red = Random.nextInt(256)
+    val green = Random.nextInt(256)
+    val blue = Random.nextInt(256)
+    return Color(red, green, blue)
 }
 
 @Composable
@@ -146,7 +170,7 @@ private fun roundButton(
     OutlinedButton(
         onClick = onClicked, shape = CircleShape, colors = ButtonDefaults.outlinedButtonColors(
             containerColor = backgroundColor,
-        ), border = BorderStroke(0.dp, Color.Transparent), modifier = modifier
+        ), border = BorderStroke(0.dp, Color.Transparent), modifier = modifier.height(40.dp)
     ) {
         Text(
             text = title, style = MaterialTheme.typography.bodySmall.copy(color = Color.White)

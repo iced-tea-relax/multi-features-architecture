@@ -47,7 +47,7 @@ data class CastEntity(
     val creditId: String,
 
     @ColumnInfo(defaultValue = "0")
-    val movieId: Int,
+    val movieId: Long,
 )
 
 fun CastEntity.asExternalModel() = Cast(

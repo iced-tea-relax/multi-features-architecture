@@ -4,10 +4,10 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.baka3k.core.database.model.EpisodeEntity
 import com.baka3k.core.database.model.MovieTypeCrossRef
+
 /**
- * Dao fpr cross reference for many to many relationship between [EpisodeEntity] and [AuthorEntity]
+ * Dao fpr cross reference for many to many relationship between [MovieEntity] and [TypeEntity]
  */
 @Dao
 interface MovieTypeDao {
@@ -16,7 +16,7 @@ interface MovieTypeDao {
 
     @Query(
         value = """
-            SELECT COUNT(*) FROM TYPE
+            SELECT COUNT(*) FROM movie_type
 
         """
     )

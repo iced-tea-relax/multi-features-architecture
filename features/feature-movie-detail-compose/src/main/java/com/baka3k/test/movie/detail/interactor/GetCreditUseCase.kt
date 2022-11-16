@@ -6,10 +6,10 @@ import com.baka3k.core.data.movie.repository.CreditRepository
 import javax.inject.Inject
 
 class GetCreditUseCase @Inject constructor(
-) : SingleUseCaseWithParameter<Int, Result<Int>> {
+) : SingleUseCaseWithParameter<Long, Result<Int>> {
     @Inject
     lateinit var creditRepository: CreditRepository
-    override suspend fun invoke(movieId: Int): Result<Int> {
+    override suspend fun invoke(movieId: Long): Result<Int> {
         return creditRepository.getCredit(movieId = movieId)
     }
 }

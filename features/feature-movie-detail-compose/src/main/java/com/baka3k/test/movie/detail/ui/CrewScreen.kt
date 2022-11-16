@@ -1,7 +1,5 @@
 package com.baka3k.test.movie.detail.ui
 
-import android.util.Log
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,7 +22,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.baka3k.architecture.core.ui.component.AsyncImageView
-import com.baka3k.architecture.core.ui.compose.ShimmerAnimation
+import com.baka3k.architecture.core.ui.component.ShimmerAnimation
 import com.baka3k.architecture.core.ui.theme.AppTheme
 import com.baka3k.core.common.logger.Logger
 import com.baka3k.core.data.movie.model.PhotoSize

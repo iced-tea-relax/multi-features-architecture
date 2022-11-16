@@ -13,5 +13,5 @@ data class Cast(
     val character: String,
     val order: Int,
     val creditId: String,
-    val movieId: Int,
+    val movieId: Long,
 )

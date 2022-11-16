@@ -21,3 +21,6 @@ dependencies {
     implementation(libs.androidx.work.ktx)
     implementation(libs.hilt.ext.work)
 }
+android {
+    namespace = "com.baka3k.sync"
+}

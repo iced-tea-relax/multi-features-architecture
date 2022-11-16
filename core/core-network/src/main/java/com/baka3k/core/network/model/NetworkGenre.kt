@@ -10,3 +10,7 @@ data class NetworkGenre(
     @SerialName("name")
     val name: String = "",
 )
+@Serializable
+data class NetworkGenreResponse(
+    val genres: List<NetworkGenre> = emptyList(),
+)

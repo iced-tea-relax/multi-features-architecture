@@ -11,3 +11,6 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 }
+android {
+    namespace = "com.baka3k.core.navigation"
+}

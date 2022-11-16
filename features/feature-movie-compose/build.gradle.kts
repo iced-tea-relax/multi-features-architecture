@@ -15,3 +15,6 @@ dependencies {
     implementation(libs.com.google.accompanist.pager)
     implementation(libs.com.google.accompanist.swiperefresh)
 }
+android {
+    namespace = "com.baka3k.architecture.feature.movie"
+}

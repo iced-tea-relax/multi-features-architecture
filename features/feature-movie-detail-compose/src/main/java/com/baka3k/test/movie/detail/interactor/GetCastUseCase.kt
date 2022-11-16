@@ -9,10 +9,10 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GetCastUseCase @Inject constructor(
-) : UpStreamSingleUseCaseParameter<Int, Flow<Result<List<Cast>>>> {
+) : UpStreamSingleUseCaseParameter<Long, Flow<Result<List<Cast>>>> {
     @Inject
     lateinit var creditRepository: CreditRepository
-    override fun invoke(idMovie: Int): Flow<Result<List<Cast>>> {
+    override fun invoke(idMovie: Long): Flow<Result<List<Cast>>> {
         return creditRepository.getCastStream(idMovie).asResult()
     }
 }

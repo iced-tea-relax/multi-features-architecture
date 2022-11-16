@@ -58,11 +58,11 @@ interface MovieDao {
 
     @Query(
         value = """
-        SELECT * FROM movies
+        SELECT * FROM movies 
         WHERE id = :id
     """
     )
-    fun getMovieEntity(id: String): Flow<MovieEntity>
+    fun getMovieEntity(id: Long): Flow<MovieEntity>
 
     @Query(value = "SELECT * FROM movies")
     fun getMovieEntitiesStream(): Flow<List<MovieEntity>>

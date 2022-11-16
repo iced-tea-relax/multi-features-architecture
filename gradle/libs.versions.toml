@@ -1,7 +1,7 @@
 [versions]
 accompanist = "0.26.4-beta"
 androidDesugarJdkLibs = "1.1.5"
-androidGradlePlugin = "7.3.0"
+androidGradlePlugin = "7.3.1"
 androidxActivity = "1.4.0"
 androidxAppCompat = "1.4.2"
 androidxCore = "1.8.0"
@@ -69,6 +69,9 @@ androidx-compose-ui-testManifest = "1.3.0-beta03"
 androidx-compose-ui-graphics = "1.3.0-beta03"
 accompanist-pager = "0.26.4-beta"
 accompanist-swiperefresh = "0.26.4-beta"
+accompanist-flowlayout = "0.27.0"
+androidxMetrics = "1.0.0-alpha03"
+androidxTracing = "1.1.0"
 [libraries]
 
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "androidx-compose-foundation" }
@@ -82,8 +85,13 @@ androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util", ve
 androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "androidx-compose-ui-test" }
 androidx-compose-ui-testManifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "androidx-compose-ui-testManifest" }
 androidx-compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics", version.ref = "androidx-compose-ui-graphics" }
+androidx-metrics = { group = "androidx.metrics", name = "metrics-performance", version.ref = "androidxMetrics" }
+androidx-tracing-ktx = {group = "androidx.tracing", name="tracing-ktx", version.ref = "androidxTracing" }
+
+
 com-google-accompanist-pager = { group = "com.google.accompanist", name = "accompanist-pager", version.ref = "accompanist-pager" }
 com-google-accompanist-swiperefresh = { group = "com.google.accompanist", name = "accompanist-swiperefresh", version.ref = "accompanist-swiperefresh" }
+com-google-accompanist-flowlayout = { group = "com.google.accompanist", name = "accompanist-flowlayout", version.ref = "accompanist-flowlayout" }
 
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "androidxComposeMaterial3" }
 androidx-compose-material3-windowSizeClass = {group = "androidx.compose.material3", name = "material3-window-size-class", version.ref="androidxComposeMaterial3"}

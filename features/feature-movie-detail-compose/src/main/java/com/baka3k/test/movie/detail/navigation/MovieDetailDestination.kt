@@ -1,7 +1,6 @@
 package com.baka3k.test.movie.detail.navigation
 
 import android.net.Uri
-import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.core.net.toUri
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
@@ -25,12 +24,14 @@ object MovieDetailDestination : Screen {
         return "movide_detail_router/$movieId"
     }
 
-    fun createNavigationRouteByDeepLink(movieId: String): Uri {
+    fun createNavigationRouteByDeepLink(movieId: Long): Uri {
         return "$deepLinkUrl?$movieIdArg=$movieId".toUri()
     }
 }
 
-fun NavGraphBuilder.movieDetailComposeGraph() {
+fun NavGraphBuilder.movieDetailComposeGraph(
+    onBackPress: () -> Unit
+) {
     composable(
         route = MovieDetailDestination.startScreen,
         arguments = listOf(
@@ -41,6 +42,6 @@ fun NavGraphBuilder.movieDetailComposeGraph() {
                 "${MovieDetailDestination.deepLinkUrl}?${MovieDetailDestination.movieIdArg}={${MovieDetailDestination.movieIdArg}}"
         })
     ) {
-        MovieDetailRouter()
+        MovieDetailRouter(onBackPress = onBackPress)
     }
 }

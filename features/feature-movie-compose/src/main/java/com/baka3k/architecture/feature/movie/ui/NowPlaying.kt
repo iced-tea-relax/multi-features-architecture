@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,7 +25,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.AsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
-import com.baka3k.architecture.core.ui.compose.ShimmerAnimation
+import com.baka3k.architecture.core.ui.component.ShimmerAnimation
 import com.baka3k.architecture.core.ui.theme.AppTheme
 import com.baka3k.architecture.feature.movie.NowPlayingUiState
 import com.baka3k.core.common.logger.Logger
@@ -38,7 +37,7 @@ import com.google.accompanist.pager.HorizontalPager
 
 @Composable
 fun nowPlayingMovie(
-    navigateToMovieDetail: (String) -> Unit,
+    navigateToMovieDetail: (Long) -> Unit,
     nowPlayingUiState: NowPlayingUiState,
     modifier: Modifier = Modifier
 ) {
@@ -67,7 +66,7 @@ fun nowPlayingMovie(
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 private fun horizontalList(
-    navigateToMovieDetail: (String) -> Unit,
+    navigateToMovieDetail: (Long) -> Unit,
     nowPlayingUiState: NowPlayingUiState.Success,
     modifier: Modifier = Modifier
 ) {
@@ -78,7 +77,7 @@ private fun horizontalList(
         page(movie = nowPlayingUiState.movies[page], modifier = modifier.clickable {
             val movie = nowPlayingUiState.movies[page]
             Logger.d("#page() ${movie.title}")
-            navigateToMovieDetail(movie.id.toString())
+            navigateToMovieDetail(movie.id)
         })
     }
 }

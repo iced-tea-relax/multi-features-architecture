@@ -4,6 +4,7 @@ import com.baka3k.core.network.BuildConfig
 import com.baka3k.core.network.model.NetworkMovieResponse
 import com.baka3k.core.network.model.NetworkCreditsResponse
 import com.baka3k.core.network.model.NetworkGenre
+import com.baka3k.core.network.model.NetworkGenreResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -42,7 +43,7 @@ interface RetrofitMovieNetworkApi {
 
     @GET("/3/movie/{movieID}/credits")
     suspend fun getCredits(
-        @Path("movieID") movieId: Int,
+        @Path("movieID") movieId: Long,
         @Query("language") lang: String = "en-US",
         @Query("page") page: Int = 1,
         @Query("api_key") clientId: String = BuildConfig.MOVIEDB_ACCESS_KEY
@@ -51,6 +52,6 @@ interface RetrofitMovieNetworkApi {
     @GET("/3/genre/movie/list")
     suspend fun getGenres(
         @Query("api_key") clientId: String = BuildConfig.MOVIEDB_ACCESS_KEY
-    ): List<NetworkGenre>
+    ): NetworkGenreResponse
 
 }

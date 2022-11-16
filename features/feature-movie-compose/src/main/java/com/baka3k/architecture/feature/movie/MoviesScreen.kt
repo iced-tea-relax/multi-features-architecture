@@ -1,7 +1,6 @@
 package com.baka3k.architecture.feature.movie
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -33,7 +32,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.composed
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -44,7 +42,7 @@ import com.baka3k.architecture.feature.movie.ui.popularMovieView
 
 @Composable
 fun MovieRoute(
-    navigateToMovieDetail: (String) -> Unit,
+    navigateToMovieDetail: (Long) -> Unit,
     viewModel: MovieListViewModel = hiltViewModel()
 ) {
     val uiNowPlayingUiState by viewModel.nowPlayingUiState.collectAsState()
@@ -122,7 +120,7 @@ fun customEditText(modifier: Modifier = Modifier, onValueChanged: (String) -> Un
 
 @Composable
 fun MoviesScreen(
-    navigateToMovieDetail: (String) -> Unit,
+    navigateToMovieDetail: (Long) -> Unit,
     nowPlayingUiState: NowPlayingUiState,
     popularUiState: PopularUiState
 ) {

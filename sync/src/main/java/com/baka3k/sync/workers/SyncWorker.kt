@@ -17,6 +17,7 @@ import androidx.work.WorkerParameters
 import com.baka3k.core.common.network.Dispatcher
 import com.baka3k.core.common.network.HiDispatchers
 import com.baka3k.core.data.Synchronizer
+import com.baka3k.core.data.movie.repository.GenreRepository
 import com.baka3k.core.data.movie.repository.MovieRepository
 import com.baka3k.core.data.movie.repository.MovieTypeRepository
 import com.baka3k.core.datastore.ChangeListVersions
@@ -87,11 +88,15 @@ class SyncWorker @AssistedInject constructor(
     private val hiPreferences: HiPreferencesDataSource,
     private val movieRepository: MovieRepository,
     private val movieTypeRepository: MovieTypeRepository,
+    private val genreRepository: GenreRepository,
     @Dispatcher(HiDispatchers.IO) private val ioDispatcher: CoroutineDispatcher,
 ) : CoroutineWorker(appContext, workerParams), Synchronizer {
     override suspend fun doWork(): Result = withContext(ioDispatcher) {
         val syncedSuccessfully = awaitAll(
-            async { movieTypeRepository.sync() },
+            async {
+                movieTypeRepository.sync()
+                genreRepository.sync()
+            },
         ).all { it }
 
         if (syncedSuccessfully) {

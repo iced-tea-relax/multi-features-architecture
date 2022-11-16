@@ -14,4 +14,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout.compose)
     implementation(libs.com.google.accompanist.pager)
     implementation(libs.com.google.accompanist.swiperefresh)
+    implementation(libs.com.google.accompanist.flowlayout)
+}
+android {
+    namespace = "com.baka3k.architecture.feature.movie.detail"
 }

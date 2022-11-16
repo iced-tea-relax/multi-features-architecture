@@ -18,7 +18,7 @@ interface CrewDao {
         WHERE movieId = :movieId
     """
     )
-    fun getCrew(movieId: Int): Flow<List<CrewEntity>>
+    fun getCrew(movieId: Long): Flow<List<CrewEntity>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertOrIgnoreCrew(crewEntities: List<CrewEntity>): List<Long>

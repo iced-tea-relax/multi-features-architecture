@@ -9,10 +9,10 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GetMovieDetailUseCase @Inject constructor(
-) : UpStreamSingleUseCaseParameter<String, Flow<Result<Movie>>> {
+) : UpStreamSingleUseCaseParameter<Long, Flow<Result<Movie>>> {
     @Inject
     lateinit var movieRepository: MovieRepository
-    override fun invoke(idMovie: String): Flow<Result<Movie>> {
+    override fun invoke(idMovie: Long): Flow<Result<Movie>> {
         return movieRepository.getMovieStream(idMovie).asResult()
     }
 }

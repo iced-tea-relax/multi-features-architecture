@@ -43,7 +43,7 @@ data class CrewEntity(
     val creditId: String,
 
     @ColumnInfo(defaultValue = "0")
-    val movieId: Int,
+    val movieId: Long,
 )
 
 fun CrewEntity.asExternalModel() = Crew(

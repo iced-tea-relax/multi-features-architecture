@@ -2,7 +2,6 @@ package com.baka3k.architecture.feature.movie.navigation
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import androidx.navigation.navDeepLink
 import com.baka3k.architecture.feature.movie.MovieRoute
 import com.baka3k.core.navigation.Screen
 
@@ -16,7 +15,7 @@ object MovieDestination : Screen {
 }
 
 fun NavGraphBuilder.movieScreenComposeGraph(
-    navigateToMovieDetail: (String) -> Unit
+    navigateToMovieDetail: (Long) -> Unit
 ) {
     composable(
         route = MovieDestination.startScreen

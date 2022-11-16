@@ -13,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
-    override fun initViewBinding(): ViewBinding? {
+    override fun initViewBinding(): ViewBinding {
         return ActivityMainBinding.inflate(layoutInflater)
     }
 

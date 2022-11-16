@@ -8,6 +8,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    namespace = "com.baka3k.architecture.core.ui"
 }
 dependencies {
 //    implementation(project(":core:core-model"))

@@ -14,3 +14,6 @@ dependencies {
     implementation(libs.kotlinx.datetime)
     implementation(libs.kotlinx.serialization.json)
 }
+android {
+    namespace = "com.baka3k.core.model"
+}

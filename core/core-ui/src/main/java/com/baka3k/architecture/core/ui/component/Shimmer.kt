@@ -1,4 +1,4 @@
-package com.baka3k.architecture.core.ui.compose
+package com.baka3k.architecture.core.ui.component
 
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode

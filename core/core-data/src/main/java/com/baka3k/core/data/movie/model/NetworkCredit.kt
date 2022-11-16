@@ -5,11 +5,11 @@ import com.baka3k.core.database.model.CrewEntity
 import com.baka3k.core.network.model.NetworkCast
 import com.baka3k.core.network.model.NetworkCrew
 
-fun NetworkCast.asCastEntity(movieId: Int) = CastEntity(
+fun NetworkCast.asCastEntity(movieId: Long) = CastEntity(
     id = id,
     adult = adult,
     gender = gender.toInt(),
-    knownForDepartment = "knownForDepartment()",
+    knownForDepartment = knownForDepartment,
     name = name,
     originalName = originalName,
     popularity = popularity.toString(),
@@ -21,11 +21,11 @@ fun NetworkCast.asCastEntity(movieId: Int) = CastEntity(
     movieId = movieId,
 )
 
-fun NetworkCrew.asCrewEntity(movieId: Int) = CrewEntity(
+fun NetworkCrew.asCrewEntity(movieId: Long) = CrewEntity(
     id = id,
     adult = adult,
     gender = gender.toInt(),
-    knownForDepartment = "knownForDepartment()",
+    knownForDepartment = knownForDepartment,
     name = name,
     originalName = originalName,
     popularity = popularity.toString(),

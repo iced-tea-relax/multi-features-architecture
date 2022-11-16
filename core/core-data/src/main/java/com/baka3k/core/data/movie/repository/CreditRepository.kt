@@ -6,7 +6,7 @@ import com.baka3k.core.model.Crew
 import kotlinx.coroutines.flow.Flow
 
 interface CreditRepository {
-    fun getCastStream(movieId: Int): Flow<List<Cast>>
-    fun getCrewStream(movieId: Int): Flow<List<Crew>>
-    suspend fun getCredit(movieId: Int): Result<Int>
+    fun getCastStream(movieId: Long): Flow<List<Cast>>
+    fun getCrewStream(movieId: Long): Flow<List<Crew>>
+    suspend fun getCredit(movieId: Long): Result<Int>
 }

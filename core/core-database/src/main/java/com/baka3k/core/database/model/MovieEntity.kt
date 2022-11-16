@@ -44,7 +44,6 @@ fun MovieEntity.asExternalModel() = Movie(
     id = id,
     adult = adult,
     backdropPath = backdropPath,
-    genreIDS = emptyList(),
     originalTitle = originalTitle,
     originalLanguage = originalLanguage,
     overview = overview,

@@ -12,5 +12,5 @@ data class Crew(
     val department: String,
     val job: String,
     val creditId: String,
-    val movieId: Int,
+    val movieId: Long,
 )

@@ -63,7 +63,7 @@ class RetrofitMovieNetworkDataSource @Inject constructor(
         }
     }
 
-    override suspend fun getCredits(movieId: Int): Result<NetworkCreditsResponse> {
+    override suspend fun getCredits(movieId: Long): Result<NetworkCreditsResponse> {
         return com.baka3k.core.common.result.runCatching {
             networkApi.getCredits(movieId = movieId)
         }
@@ -71,7 +71,7 @@ class RetrofitMovieNetworkDataSource @Inject constructor(
 
     override suspend fun getGenres(): Result<List<NetworkGenre>> {
         return com.baka3k.core.common.result.runCatching {
-            networkApi.getGenres()
+            networkApi.getGenres().genres
         }
     }
 }

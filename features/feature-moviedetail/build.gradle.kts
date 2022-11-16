@@ -10,6 +10,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    namespace = "com.baka3k.test.feature.moviedetail"
 }
 dependencies {
     implementation(libs.kotlinx.datetime)

@@ -61,6 +61,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    namespace = "com.baka3k.architecture.multifeatures"
 }
 
 dependencies {
@@ -109,4 +110,6 @@ dependencies {
     implementation(libs.androidx.window.manager)
     implementation(libs.androidx.compose.material3.windowSizeClass)
     implementation(libs.androidx.constraintlayout.compose)
+    api(libs.androidx.metrics)
+    api(libs.androidx.tracing.ktx)
 }

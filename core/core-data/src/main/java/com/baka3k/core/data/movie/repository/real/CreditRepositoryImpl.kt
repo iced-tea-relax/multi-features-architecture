@@ -12,7 +12,6 @@ import com.baka3k.core.database.model.asExternalModel
 import com.baka3k.core.datastore.HiPreferencesDataSource
 import com.baka3k.core.model.Cast
 import com.baka3k.core.model.Crew
-import com.baka3k.core.model.Movie
 import com.baka3k.core.network.datasource.CreditNetworkDataSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -24,18 +23,18 @@ class CreditRepositoryImpl @Inject constructor(
     private val network: CreditNetworkDataSource,
     private val preference: HiPreferencesDataSource
 ) : CreditRepository {
-    override fun getCastStream(movieId: Int): Flow<List<Cast>> {
+    override fun getCastStream(movieId: Long): Flow<List<Cast>> {
         return castDao.getCast(movieId).map { data ->
             data.map(CastEntity::asExternalModel)
         }
     }
 
-    override fun getCrewStream(movieId: Int): Flow<List<Crew>> =
+    override fun getCrewStream(movieId: Long): Flow<List<Crew>> =
         crewDao.getCrew(movieId).map { crewEntities ->
             crewEntities.map(CrewEntity::asExternalModel)
         }
 
-    override suspend fun getCredit(movieId: Int): Result<Int> =
+    override suspend fun getCredit(movieId: Long): Result<Int> =
         when (val response = network.getCredits(movieId)) {
             is Result.Success -> {
                 val crew = response.data.crew

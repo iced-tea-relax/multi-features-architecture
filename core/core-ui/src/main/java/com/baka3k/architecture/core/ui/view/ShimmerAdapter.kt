@@ -4,7 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.recyclerview.widget.RecyclerView
-import com.baka3k.architecture.core.ui.compose.ShimmerAnimation
+import com.baka3k.architecture.core.ui.component.ShimmerAnimation
 
 class ShimmerAdapter(private val numberItem: Int = 4) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {

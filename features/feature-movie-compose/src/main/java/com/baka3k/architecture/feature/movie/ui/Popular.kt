@@ -28,8 +28,7 @@ import coil.compose.AsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
 import com.baka3k.architecture.core.ui.R
-import com.baka3k.architecture.core.ui.compose.ShimmerAnimation
-import com.baka3k.architecture.core.ui.compose.ShimmerList
+import com.baka3k.architecture.core.ui.component.ShimmerAnimation
 import com.baka3k.architecture.core.ui.theme.AppTheme
 import com.baka3k.architecture.feature.movie.PopularUiState
 import com.baka3k.core.common.logger.Logger
@@ -40,7 +39,7 @@ import kotlin.random.Random
 
 @Composable
 fun popularMovieView(
-    navigateToMovieDetail: (String) -> Unit,
+    navigateToMovieDetail: (Long) -> Unit,
     popularUiState: PopularUiState,
     modifier: Modifier = Modifier
 ) {
@@ -93,7 +92,7 @@ fun popularMovieView(
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun popularItem(
-    navigateToMovieDetail: (String) -> Unit,
+    navigateToMovieDetail: (Long) -> Unit,
     popularUiState: PopularUiState,
     modifier: Modifier = Modifier
 ) {
@@ -118,7 +117,7 @@ private fun popularItem(
                         )
                         .clickable {
                             Logger.d("#popularItem() ${movie.title}")
-                            navigateToMovieDetail(movie.id.toString())
+                            navigateToMovieDetail(movie.id)
                         },
                         content = {
                             AsyncImage(

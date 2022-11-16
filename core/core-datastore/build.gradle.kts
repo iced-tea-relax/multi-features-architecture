@@ -20,6 +20,7 @@ android {
     defaultConfig {
         consumerProguardFiles("consumer-proguard-rules.pro")
     }
+    namespace = "com.baka3k.core.datastore"
 }
 
 // Setup protobuf configuration, generating lite Java and Kotlin classes

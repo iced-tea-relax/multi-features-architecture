@@ -19,7 +19,7 @@ interface CastDao {
         WHERE movieId = :movieId
     """
     )
-    fun getCast(movieId: Int): Flow<List<CastEntity>>
+    fun getCast(movieId: Long): Flow<List<CastEntity>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertOrIgnoreCast(castEntities: List<CastEntity>): List<Long>

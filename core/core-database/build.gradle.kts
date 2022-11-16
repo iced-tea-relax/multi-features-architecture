@@ -19,6 +19,7 @@ android {
 
 //        testInstrumentationRunner = "com.google.samples.apps.nowinandroid.core.testing.NiaTestRunner"
     }
+    namespace = "com.baka3k.core.database"
 }
 
 dependencies {

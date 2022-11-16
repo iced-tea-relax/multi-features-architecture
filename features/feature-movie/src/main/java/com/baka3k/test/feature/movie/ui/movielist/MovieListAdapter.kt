@@ -6,12 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.compose.ui.platform.ComposeView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import coil.size.Scale
-import coil.transform.CircleCropTransformation
-import com.baka3k.architecture.core.ui.compose.ShimmerAnimation
 import com.baka3k.architecture.core.ui.view.ShimmerLoading
 import com.baka3k.core.model.Movie
 import com.baka3k.test.feature.movie.R
